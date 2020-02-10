@@ -11,7 +11,7 @@
 	 background-color: #003366;
 	 text-align: center;	
 	 color: white;
-	 font-size:130%;
+	 font-size: 80%;
 }
 .legend_bar{
 	color: white;
