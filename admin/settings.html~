@@ -15,7 +15,7 @@
 			</div>
 			<p>*Last Name*,*First Name*</p><br>
 			<p>*Username*</p>
-			<hr>
+			<hr width="70%" align="right">
 			<p><strong>Email</strong></p><br>
 			<p>*Email Address*</p>
 			<hr>
