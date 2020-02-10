@@ -1,0 +1,94 @@
+.rooms_leftsidebarTop {
+   position: absolute;
+   top: 10%;
+	 left: 0%;
+	 height: 30%;
+	 width: 20%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color: #994d00;
+}
+
+.rooms_leftsidebarBottom {
+	 position: absolute;
+	 top: 40%;
+	 left: 0;
+	 height: 60%;
+	 width: 20%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color:  #994d00;
+}
+
+.rooms_rightsidebar {
+	 position: absolute;
+	 top: 10%;
+	 right: 0;
+	 height: 90%;
+	 width: 20%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color:  #994d00;
+}
+
+.rooms_topbar {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 height: 10%;
+	 width: 100%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color:  #994d00;
+	 text-align: center;	
+	 color: white;
+}
+
+.rooms_chatbar {
+	 position: absolute;
+   bottom: 0;
+	 left: 20%;
+	 height: 15%;
+	 width: 60%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color: #cc7a33;
+}
+
+.rooms_actionsbar {
+	 position: absolute;
+	 bottom: 15%;
+	 left: 20%;
+	 height: 15%;
+	 width: 60%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color: #994d00;
+}
+
+.rooms_mapbar {
+	 position: absolute;
+	 bottom: 30%;
+	 left: 20%;
+   height: 60%;
+	 width: 60%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	 background-color: #cc7a33;
+}
+#logout {
+	position:absolute;
+	right: 10%;
+	top:35%;
+}
+#setting {
+	position:absolute;
+	right: 5%;
+	top:35%;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+	align-content: center;
+}

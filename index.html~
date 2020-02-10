@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VIU Sims - Log In or Sign Up</title>
+		<link rel="stylesheet" href="./css/createCSS.css">	
+	</head>
+	<body class="main">
+		<div class="login_topbar">
+		<h1>VIU SIMS</h1>
+		</div>
+		<div class="login_right">
+			<form method="post" action="loginForm.php">
+				
+				<fieldset class="field">
+				<legend class="legend_bar">Log In</legend>
+				<label for="login_user">Username</label><br>
+				<input type="text" id="login_user"/><br>
+				<label for="login_pass">Password</label><br>
+				<input type="password" id="login_pass"/><br><br>
+				<input class="button" type="submit" value="Log In"/>
+				</fieldset>
+			</form>		
+		</div>	
+		<div class="signup_right">
+			<p class="para1">Coming for the first time?<br>Sign Up!</p>
+			<form method="post" action="./game/template.html">
+				<fieldset class="field">
+				<legend class="legend_bar">Sign Up</legend>
+				<input type="text" id="signup_fname" placeholder="First Name"/>
+				<input type="text" id="signup_lname" placeholder="Last Name"/><br><br>
+				<input type="email" id="signup_email" placeholder="Email Address"/><br><br>
+ 				<input type="text" id="signup_user" placeholder="Username"/><br><br>
+				<input type="password" id="singup_pass" placeholder="Password"/><br><br>
+				<label for="signup_date">Birthday:</label><br>
+				<input type="date" id="singup_date">
+				<p>Please select your gender:</p>
+				<input type="radio" name="gender" value="male"> Male
+				<input type="radio" name="gender" value="female"> Female
+				<input type="radio" name="gender" value="other"> Other<br>
+				<p>By clicking signup, you agree to our <a href= "">Terms and Conditions.</a> </p>
+				<input class="button" type="submit" value="Sign Up"/>
+				</fieldset>
+			</form>
+		</div>
+		<div class="login_left">
+			<fieldset class="field">
+				<legend class="legend_bar">why should you play this game</legend>
+				<p>...</p>
+				<p>...</p>
+				<p>...</p>
+			</fieldset>	
+		</div>
+		<footer class="footer">
+			<p> &copy;2020 copyrights </p>
+		</footer>
+	</body>
+</html>
