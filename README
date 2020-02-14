@@ -1,0 +1,21 @@
+README FOR VIU SIMS - FunctionalPrototype
+
+Full Path:
+
+wwwstu.csci.viu.ca/~csci311f/game/template.html
+
+IMPORTANT NOTE: To have the navigation work correctly, you MUST use the smaller screen in the 115 lab, 
+or the 112 lab room. If you are viewing this from home, the size of webpage cannot be larger than 17 
+inches from corner to corner, otherwise the navigation to each of the rooms will be off. 
+
+
+Login Instructions:
+
+
+
+Brief Description:
+
+This webpage is a game designed to emulate the everyday life of a CSCI student. They have the ability to
+travel between the Gym, Classrooms, Pub, Residence and the Computer Lab.
+
+While in each of these rooms, you will have a different set of actions available to you.
