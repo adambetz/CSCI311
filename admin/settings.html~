@@ -8,14 +8,14 @@
 		<div class="heading">
 		<h2>Account</h2>
 		</div>
-		<div>
+		<div class="settingsDiv">
 			<p><strong>Personal Details</strong></p>
 			<div class="buttonDiv">
 				<button type="button" onclick="" class="button">Edit</button><br>
 			</div>
 			<p>*Last Name*,*First Name*</p><br>
 			<p>*Username*</p>
-			<hr width="70%" align="right">
+			<hr>
 			<p><strong>Email</strong></p><br>
 			<p>*Email Address*</p>
 			<hr>
