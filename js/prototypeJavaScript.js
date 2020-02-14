@@ -16,13 +16,22 @@ function InitStats(){
 }
 
 const STAT_LEVEL = {
-	CRITICAL: 'critically-low',
-	LOW: 'low',
-	NORMAL: 'normal',
-	HIGH: 'high',
-	DANGER: 'dangerously-high'
+	DEAD: 'You ded',
+	CRITICAL: 'Very Bad!',
+	BAD: 'Kinda Bad',
+	NORMAL: 'Normal',
+	GOOD: 'Good',
+	EXCELLENT: 'Excellent'
 }
-
+const STATS = {
+	MOOD: 'mood',
+	ENERGY: 'energy',
+	GRADE: 'grade',
+	SUSPECTLEVEL: 'suspectLevel',
+	HUNGER: 'hunger',
+	CAFFEINE: 'caffeine',
+	NERD: 'nerd'
+}
 const ACTIONS = {
 	SLEEP: 'sleep',
 	STUDY: 'study',
@@ -57,6 +66,8 @@ class Player {
 }
 
 function SelectAction(action){
+	
+	alert("You are in a " +action +" state...\nPress okay to jump ahead in time");
 	switch(action) {
   	case "SLEEP":
     	sleep();
@@ -89,39 +100,115 @@ function SelectAction(action){
     	alert("error in switch statement for SelectAction()");
 	}
 }
+//TODO change to handle percentages
+function increaseStat(stat){
+	switch(stat){
+		case STAT_LEVEL.DEAD:
+			return STAT_LEVEL.DEAD;
+			break;
+		case STAT_LEVEL.CRITICAL:
+			return STAT_LEVEL.BAD;
+			break;
+		case STAT_LEVEL.BAD:
+			return STAT_LEVEL.NORMAL;
+			break;
+		case STAT_LEVEL.NORMAL:
+			return STAT_LEVEL.GOOD;
+			break; 
+		case STAT_LEVEL.GOOD: 
+			return STAT_LEVEL.EXCELLENT;
+			break;
+		case STAT_LEVEL.EXCELLENT: 
+			return STAT_LEVEL.EXCELLENT;
+		break;
 
-function IncreaseStat(){
+		default:
+			console.log("ERROR: increase stats switch-statement fell through");
+	}
+}
+function decreaseStat(stat, multiplier){
+	switch(stat){
+		case STAT_LEVEL.DEAD:
+			return STAT_LEVEL.DEAD;
+			break;
+		case STAT_LEVEL.CRITICAL:
+			return STAT_LEVEL.DEAD;
+			break;
+		case STAT_LEVEL.BAD:
+			return STAT_LEVEL.CRITICAL;
+			break;
+		case STAT_LEVEL.NORMAL:
+			return STAT_LEVEL.BAD;
+			break; 
+		case STAT_LEVEL.GOOD: 
+			return STAT_LEVEL.NORMAL;
+			break;
+		case STAT_LEVEL.EXCELLENT: 
+			return STAT_LEVEL.GOOD;
+		break;
 
+		default:
+			console.log("ERROR: increase stats switch-statement fell through");
+	}
 }
 
-function DecreaseStat(){
+//missing class decreases grade
+function sleep(){
+	player.energy = increaseStat(player.energy);
+	player.caffeine = increaseStat(player.caffeine);
 
+	if(player.suspectLevel == STAT_LEVEL.BAD || player.STAT_LEVEL == STAT_LEVEL.CRITICAL){
+		player.suspectLevel = increaseStat(player.suspectLevel);
+	}
+
+	player.hunger = decreaseStat(player.hunger);
+	InitStats();
 }
-
-function Sleep(){
-
-}
-function Study(){
-
+function study(){
+	player.nerd = increaseStat(player.nerd);
+	
+	player.mood = decreaseStat(player.mood);
+	player.energy = decreaseStat(player.energy);
+	InitStats();
 }
 function gym(){
-
+	player.mood = increaseStat(player.mood);
+	
+	player.energy = decreaseStat(player.energy);
+	player.hunger = decreaseStat(player.hunger);
+	InitStats();
 }
 function chat(){
-
+	player.mood = increaseStat(player.mood);
+	InitStats();
 }
 function coffee(){
+	player.energy = increaseStat(player.energy);
 
+	player.caffeine = decreaseStat(player.caffeine);
+	InitStats();
 }
 function flirt(){
+	player.mood = increaseStat(player.mood);
 
+	player.nerd = decreaseStat(player.nerd);
+	InitStats();
 }
 function eat(){
-
+	player.hunger = increaseStat(player.hunger);
+	InitStats();
 }
 function homework(){
-
+	player.grade = increaseStat(player.grade);
+	player.nerd = increaseStat(player.nerd);
+	
+	player.mood = decreaseStat(player.mood);
+	player.energy = decreaseStat(player.energy);
+	InitStats();
 }
 function hack(){
+	player.grade = increaseStat(player.grade);
 
+	player.suspectLevel = decreaseStat(player.suspectLevel);
+	InitStats();
 }
