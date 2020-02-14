@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <div class="rooms_topbar">
         <h1>VIU SIMS</h1>
         <button id="logout" onclick="window.history.back()">Log Out</button>
-        <button id="setting" onclick="window.history.back()">Setting</button>
+        <a href="../admin/settings.html"><button id="setting">Settings</button></a>
 </div>
 
 <div class="rooms_leftsidebarTop">
@@ -25,12 +26,12 @@ arnold
 
 <div class="rooms_leftsidebarBottom">
 <!--referenced by js. Hardcoad for prototype-->
-        <h2 id="roomName">template</h2>
+        <h2 id="roomName">TEMPLATE</h2>
         <p id="roomDesc">This is the template room</p>
 </div>
 
 <div class="rooms_rightsidebar">
-        <h2 class="heading">STATS</h2>
+        <h2 class="heading"> STATS</h2>
         <table id="statsTable">
                 <tr>
                         <td>Mood:</td>
@@ -82,6 +83,11 @@ arnold
 </div>
 <div class="rooms_mapbar">
    <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
+   <a href="gym.html"><div class="gym" title="Go to the Gym"></div></a>
+   <a href="residency.html"><div class="residency" title="Go to the Residence"></div></a>
+   <a href="labs.html"><div class="labs" title="Go to the Lab"></div></a>
+   <a href="pub.html"><div class="bar" title="Go to the Pub"></div></a>
+   <a href="classroom.html"><div class="classrooms" title="Go to the Classroom"></div></a>
 </div>
 </body>
 </html>

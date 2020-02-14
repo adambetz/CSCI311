@@ -26,8 +26,8 @@ arnold
 
 <div class="rooms_leftsidebarBottom">
 <!--referenced by js. Hardcoad for prototype-->
-        <h2 id="roomName">TEMPLATE</h2>
-        <p id="roomDesc">This is the template room</p>
+        <h2 id="roomName">Lab</h2>
+        <p id="roomDesc">This is the Lab room</p>
 </div>
 
 <div class="rooms_rightsidebar">
@@ -70,13 +70,13 @@ arnold
 <div class="rooms_actionsbar">
     <h3 class="heading">CHOOSE AN ACTION...</h3>
     <div class="action_buttons">
-        <button id="SLEEP" onclick="SelectAction(id)">Sleep</button>
-        <button id="STUDY" onclick="SelectAction(id)">Study</button>
-        <button id="GYM" onclick="SelectAction(id)">Go to gym</button>
-        <button id="CHAT" onclick="SelectAction(id)">Socialize</button>
-        <button id="COFFEE" onclick="SelectAction(id)">grab a coffee</button>
-        <button id="FLIRT" onclick="SelectAction(id)">Get your flirt on</button>
-        <button id="EAT" onclick="SelectAction(id)">Grab a bite</button>
+        <button id="SLEEP" onclick="SelectAction(id)" style="display: none;">Sleep</button>
+        <button id="STUDY" onclick="SelectAction(id)" style="display: none;">Study</button>
+        <button id="GYM" onclick="SelectAction(id)" style="display: none;">Go to gym</button>
+        <button id="CHAT" onclick="SelectAction(id)" style="display: none;">Socialize</button>
+        <button id="COFFEE" onclick="SelectAction(id)" style="display: none;">grab a coffee</button>
+        <button id="FLIRT" onclick="SelectAction(id)" style="display: none;">Get your flirt on</button>
+        <button id="EAT" onclick="SelectAction(id)" style="display: none;">Grab a bite</button>
         <button id="HOMEWORK" onclick="SelectAction(id)">Do homework</button>
         <button id="HACK" onclick="SelectAction(id)">Hack a computer</button>
     </div>
@@ -84,10 +84,11 @@ arnold
 <div class="rooms_mapbar">
    <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
    <a href="gym.html"><div class="gym" title="Go to the Gym"></div></a>
-   <a href="residency.html"><div class="residency"></div></a>
-   <a href="labs.html"><div class="labs"></div></a>
-   <a href="pub.html"><div class="bar"></div></a>
-   <a href="classroom.html"><div class="classrooms"></div></a>
+   <a href="residency.html"><div class="residency" title="Go to the Residence"></div></a>
+   <a href="labs.html"><div class="labs" title="Go to the Lab"></div></a>
+   <a href="pub.html"><div class="bar" title="Go to the Pub"></div></a>
+   <a href="classroom.html"><div class="classrooms" title="Go to the Classroom"></div></a>
+
 </div>
 </body>
 </html>
