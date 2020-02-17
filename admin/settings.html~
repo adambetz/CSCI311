@@ -6,7 +6,10 @@
 	</head>
 	<body class="main">
 		<div class="heading">
-		<h2>Account</h2>
+		<h2>Account Settings</h2>
+		</div>
+		<div class="buttonDiv">
+			<a href="../game/template.html"><button type="button" class="button">Done</button></a>		
 		</div>
 		<div class="settingsDiv">
 			<p><strong>Personal Details</strong></p>
