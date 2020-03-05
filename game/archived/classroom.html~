@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>VIU SIMS</title>
+<link rel="stylesheet" href="../css/templateCSS.css"/>
+<script src="../js/prototypeJavaScript.js"></script>
+</head>
+<body onload="Initialize()">
+
+<div class="rooms_topbar">
+        <h1>VIU SIMS</h1>
+        <button id="logout" onclick="window.history.back()">Log Out</button>
+        <a href="../admin/settings.html"><button id="setting">Settings</button></a>
+</div>
+
+<div class="rooms_leftsidebarTop">
+<h2 class="heading">WHO'S ONLINE</h2>
+<!-- JS function grabs list and display's who is logged on-->
+<p id="onlineList">
+  bill <br>
+jill <br>
+arnold
+</p>
+</div>
+
+<div class="rooms_leftsidebarBottom">
+<!--referenced by js. Hardcoad for prototype-->
+        <h2 id="roomName">TEMPLATE</h2>
+        <p id="roomDesc">This is the classroom</p>
+</div>
+
+<div class="rooms_rightsidebar">
+        <h2 class="heading"> STATS</h2>
+        <table id="statsTable">
+                <tr>
+                        <td>Mood:</td>
+                        <td id="stat_mood">100</td>
+                </tr>
+                <tr>
+                        <td>Energy:</td>
+                        <td id="stat_energy">100</td>
+                </tr>
+                <tr>
+                        <td>Grade:</td>
+                        <td id="stat_grade">F</td>
+                </tr>
+                <tr>
+                        <td>Suspicion:</td>
+                        <td id="stat_suspect">high</td>
+                </tr>
+                <tr>
+                        <td>Hunger:</td>
+                        <td id="stat_hunger">Starving</td>
+                </tr>
+                <tr>
+                        <td>Caffeine:</td>
+                        <td id="stat_caffeine">caffeinated</td>
+                </tr>
+                <tr>
+                        <td>Nerd Status:</td>
+                        <td id="stat_nerd">noob</td>
+                </tr>
+
+        </table>
+</div>
+<div class="rooms_chatbar">
+
+</div>
+<div class="rooms_actionsbar">
+    <h3 class="heading">CHOOSE AN ACTION...</h3>
+    <div class="action_buttons">
+        <button id="SLEEP" onclick="SelectAction(id)">Sleep</button>
+        <button id="STUDY" onclick="SelectAction(id)">Study/Lecture</button>
+        <button id="GYM" onclick="SelectAction(id)" style="display: none;">Go to gym</button>
+        <button id="CHAT" onclick="SelectAction(id)" style="display: none;">Socialize</button>
+        <button id="COFFEE" onclick="SelectAction(id)" style="display: none;">grab a coffee</button>
+        <button id="FLIRT" onclick="SelectAction(id)" style="display: none;">Get your flirt on</button>
+        <button id="EAT" onclick="SelectAction(id)" style="display: none;">Grab a bite</button>
+        <button id="HOMEWORK" onclick="SelectAction(id)">Do homework</button>
+        <button id="HACK" onclick="SelectAction(id)" style="display: none;">Hack a computer</button>
+    </div>
+</div>
+<div class="rooms_mapbar">
+   <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
+   <a href="gym.html"><div class="gym" title="Go to the Gym"></div></a>
+   <a href="residency.html"><div class="residency" title="Go to the Residence"></div></a>
+   <a href="labs.html"><div class="labs" title="Go to the Lab"></div></a>
+   <a href="pub.html"><div class="bar" title="Go to the Pub"></div></a>
+   <a href="classroom.html"><div class="classrooms" title="Go to the Classroom"></div></a>
+</div>
+</body>
+</html>
