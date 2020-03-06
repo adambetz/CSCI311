@@ -4,6 +4,7 @@
 		// Update current actions to represent current room
 		//----------------------------------------------------------
 
+
         //require("dbinfo.inc");
         require("game_front_topbar.php");
         require("game_left_sidebars.php");
