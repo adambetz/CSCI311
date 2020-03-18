@@ -6,7 +6,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
+	 background-color: #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -19,7 +19,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
+	 background-color:  #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -32,7 +32,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color:  #0099CC;
+	 background-color:   #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -40,12 +40,11 @@
 .rooms_topbar {
 	 position: absolute;
 	 top: 0;
-	 left: 0;
 	 height: 10%;
 	 width: 100%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	  background-color: #003366;
+	  background-color: #004d4d;
 	 text-align: center;
 	 color: white;
 	 font-size:130%;
@@ -59,7 +58,7 @@
 	 width: 60%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #003366;
+	 background-color:  #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -72,7 +71,7 @@
 	 width: 60%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
+	 background-color: #004d4d;
 	 border-color: white;
 	 border-style: solid;
 }
