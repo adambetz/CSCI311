@@ -7,7 +7,6 @@
 <script src="../js/prototypeJavaScript.js"></script>
 </head>
 <body onload="Initialize()">
-
 <div class="rooms_topbar">
         <h1>VIU SIMS</h1>
         <button id="logout" onclick="window.history.back()">Log Out</button>

@@ -13,7 +13,7 @@
 }
 #b {
 	  background-color: #333;
-  background-image: url("game.gif");
+  background-image: url("../media/game.gif");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -66,6 +66,7 @@
 @media (min-width: 48em) {
   .masthead-brand {
   	color: white;
+  	font-size: 50px;
     
   }
   .nav-masthead {
@@ -82,3 +83,16 @@
 .mastfoot {
   color: white;
 }
+
+.login_topbar{
+	 position: absolute;
+	 top: 150;
+	 left: 0;
+	 height: 10%;
+	 width: 100%;
+	 text-align: center;	
+	 color: white;
+	 font-size:130%;
+	 font-
+}
+
