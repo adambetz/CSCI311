@@ -2,7 +2,7 @@
 	session_start();
 	require("private/dbinfo.inc");
 	require("front.php");
-
+	
 $form_name;
 $form_pass;
 $status;
@@ -34,17 +34,17 @@ function attempt_login($user, $pass){
 
 	 global $servername, $database, $username, $password;
 	 global $log;
-
+	 
 	try{
 			$myHandle = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-			//echo "Success. Connected to database";
+			echo "Success. Connected to database";
 		}catch(PDOException $e){
 			$err .="Connection failed: " . $e->getMessage(). "\n";
-			//echo "connection failed";
+			echo "connection failed";
 		}
 
-		if($myHandle){
-
+	/*	if($myHandle){
+	
 		$myStmt = "SELECT username, password FROM members WHERE username='$user'";
 		$rslt = $myHandle->query($myStmt);
 		$log = $myStmt;
@@ -52,7 +52,7 @@ function attempt_login($user, $pass){
 			foreach($rslt as $row){
 				$hashed_pass = $row['pass'];
 			}
-
+		
 			if(password_check($passwordAttempt, $hashed_pass)){
 				return true;
 			}else{
@@ -65,9 +65,10 @@ function attempt_login($user, $pass){
 		}
 	}
 	return false;
-
+*/	
 }
 
+	?>
 	if(isset($_SESSION['UserData']['Username'])){
  	$status=2;
 }
@@ -75,22 +76,22 @@ if(isset($_POST['submit'])){
    $form_name=$_POST['user'];
    $form_pass=$_POST['pass'];
    //validate data
-
+  
  //attempt login with submitted data
    if(!isset($err) && attempt_login($form_name, $form_pass)){
    		$status = 1;
 		$_SESSION['UserData']['Username'] = $form_name;
 		header("location:game/template.php");
-		//	exit;
+			exit;
    }else{
 		$status = 0;
 		$err .= "Sorry, login failed, please try again.";
 	}
 }
 
-
-?>
-
+	
+	
+	
 <main role="main" class="inner cover">
 <div class="login_topbar">
 <h1 class="cover-heading">LOG IN</h1>
@@ -108,9 +109,9 @@ if(isset($_POST['submit'])){
 				<label for="login_pass">Password</label><br>
 				<input type="password" id="pass" name="pass" required="required"/><br><br>
 				<input class="button" type="submit" name="submit" value="login"/>
-
-			</form>
-<?php
+		
+			</form>	
+<?php 
 	//check status, and either show logged in, or show register link
 	if($status === 1 || $status ===2){
 		echo "you're totally logged in: ".$_SESSION['UserData']['Username'].
@@ -119,8 +120,8 @@ if(isset($_POST['submit'])){
 		echo "Don't have an account? Create one: ";
 		echo "<a href=\"register.php\">Register</a>";
 	}
-?>
-		</div>
+?>	
+		</div>	
 
 <?php
 	require("back.php");

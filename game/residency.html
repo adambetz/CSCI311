@@ -5,6 +5,7 @@
 <title>VIU SIMS</title>
 <link rel="stylesheet" href="../css/templateCSS.css"/>
 <script src="../js/prototypeJavaScript.js"></script>
+<script src="../js/mapResidency.js"></script>
 </head>
 <body onload="Initialize()">
 
@@ -81,13 +82,16 @@ arnold
         <button id="HACK" onclick="SelectAction(id)" style="display: none;" >Hack a computer</button>
     </div>
 </div>
-<div class="rooms_mapbar">
-   <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
+<div id="map" class="rooms_mapbar">
+  <!-- <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
    <a href="gym.html"><div class="gym" title="Go to the Gym"></div></a>
    <a href="residency.html"><div class="residency" title="Go to the Residence"></div></a>
    <a href="labs.html"><div class="labs" title="Go to the Lab"></div></a>
    <a href="pub.html"><div class="bar" title="Go to the Pub"></div></a>
-   <a href="classroom.html"><div class="classrooms" title="Go to the Classroom"></div></a>
+   <a href="classroom.html"><div class="classrooms" title="Go to the Classroom"></div></a> -->
+
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8PsWNo41OsmqfWqkfpRck43DWoB8_lVA&callback=initMap"
+   async defer></script>
 </body>
 </html>

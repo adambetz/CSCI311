@@ -40,7 +40,21 @@
 .rooms_topbar {
 	 position: absolute;
 	 top: 0;
-	 height: 10%;
+	right:0;
+	 height: 50%;
+	 width: 100%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	  background-color: #004d4d;
+	 text-align: center;
+	 color: white;
+	 font-size:130%;
+}
+
+.rooms_bar {
+	 position: static;
+	 top: 0;
+	 height: 50%;
 	 width: 100%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
@@ -72,13 +86,11 @@
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
 	 background-color: #004d4d;
-	 border-color: white;
-	 border-style: solid;
 }
 
 .rooms_mapbar {
 	 position: absolute;
-	 bottom: 30%;
+	 bottom: 26%;
 	 left: 20%;
    height: 60%;
 	 width: 60%;
@@ -118,9 +130,9 @@ button:hover {
 	font-size: 150%;
 }
 
-.map {
-   height: 100%;
-   width: 100%;
+#map {
+   height: 50;
+   width: 50;
 
 }
 
