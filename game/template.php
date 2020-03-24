@@ -4,11 +4,11 @@
 		// Update current actions to represent current room
 		//----------------------------------------------------------
 
-        //require("dbinfo.inc");
-        require("game_front_topbar.php");
-        require("game_left_sidebars.php");
-        require("game_right_sidebar.php");
-        require("game_center_map.php");
-        require("game_bottom_actionbar.php");
+
+        //require("dbinfo.inc");//require_once("dbinfo.inc");
+        require_once("game_top.php");
+        require_once("game_mid.php");
+        require_once("game_actions.php");
+        require_once("game_bottom.php");
  ?>
 

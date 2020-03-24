@@ -6,7 +6,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
+	 background-color: #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -19,7 +19,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
+	 background-color:  #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -32,7 +32,7 @@
 	 width: 20%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color:  #0099CC;
+	 background-color:   #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -40,12 +40,25 @@
 .rooms_topbar {
 	 position: absolute;
 	 top: 0;
-	 left: 0;
-	 height: 10%;
+	right:0;
+	 height: 50%;
 	 width: 100%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	  background-color: #003366;
+	  background-color: #004d4d;
+	 text-align: center;
+	 color: white;
+	 font-size:130%;
+}
+
+.rooms_bar {
+	 position: static;
+	 top: 0;
+	 height: 50%;
+	 width: 100%;
+	 border-collapse: collapse;
+	 /*Testing actual position with this */
+	  background-color: #004d4d;
 	 text-align: center;
 	 color: white;
 	 font-size:130%;
@@ -59,7 +72,7 @@
 	 width: 60%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #003366;
+	 background-color:  #527a7a;
 	 border-color: white;
 	 border-style: solid;
 }
@@ -72,14 +85,12 @@
 	 width: 60%;
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
-	 background-color: #0099CC;
-	 border-color: white;
-	 border-style: solid;
+	 background-color: #004d4d;
 }
 
 .rooms_mapbar {
 	 position: absolute;
-	 bottom: 30%;
+	 bottom: 26%;
 	 left: 20%;
    height: 60%;
 	 width: 60%;
@@ -119,9 +130,9 @@ button:hover {
 	font-size: 150%;
 }
 
-.map {
-   height: 100%;
-   width: 100%;
+#map {
+   height: 50;
+   width: 50;
 
 }
 
@@ -133,7 +144,8 @@ button:hover {
   margin-top: 5%;
   z-index: 10;
   top: 0;
-  /*background-color: red;*/
+  background-color: red;
+  opacity: 0.5;
 }
 
 .gym {
@@ -144,7 +156,8 @@ button:hover {
   margin-top: 37%;
   z-index: 10;
   top: 0;
-  /*background-color: blue;*/
+  background-color: blue;
+  opacity: 0.5;
 }
 
 .residency {
@@ -155,7 +168,8 @@ button:hover {
   margin-top: 10%;
   z-index: 10;
   top: 0;
-  /*background-color: green;*/
+  background-color: green;
+  opacity: 0.5;
 }
 
 .bar {
@@ -166,7 +180,8 @@ button:hover {
   margin-top: 34%;
   z-index: 10;
   top: 0;
-  /*background-color: orange;*/
+  background-color: orange;
+  opacity: 0.5;
 }
 
 .labs {
@@ -177,5 +192,6 @@ button:hover {
   margin-top: 18%;
   z-index: 10;
   top: 0;
-  /*background-color: black;*/
+  background-color: black;
+  opacity: 0.5;
 }
