@@ -1,18 +1,58 @@
+var currentRoom = "";
 var player;
+
 function Initialize () {
-	player = new Player(STAT_LEVEL.NORMAL, STAT_LEVEL.NORMAL, STAT_LEVEL.NORMAL,
-			STAT_LEVEL.NORMAL, STAT_LEVEL.NORMAL, STAT_LEVEL.NORMAL, STAT_LEVEL.NORMAL);
+	player = new Player();
+	
 	InitStats();
+	GetRoom();
 }
 
 function InitStats(){
-	document.getElementById("stat_mood").innerHTML = player.mood;
-	document.getElementById("stat_energy").innerHTML = player.energy;
-	document.getElementById("stat_grade").innerHTML = player.grade;
-	document.getElementById("stat_suspect").innerHTML = player.suspectLevel;
-	document.getElementById("stat_hunger").innerHTML = player.hunger;
-	document.getElementById("stat_caffeine").innerHTML = player.caffeine;
-	document.getElementById("stat_nerd").innerHTML = player.nerd;
+	//var stats = ['MOOD', 'ENERGY', 'GRADE', 'SUSPECTLEVEL', 'HUNGER', 'CAFFEINE', 'NERD'];
+	//stats.forEach(initStat);
+	var stats;
+	$.ajax({
+            url:"../php/actionRequest.php", //the page containing php script
+            type: "post", //request type,
+           	data: "requestStats",
+            success: function(result){
+             stats = JSON.parse(result);
+             player.UpdateStats(stats[0],stats[1],stats[2],stats[3],stats[4],stats[5],stats[6]);
+             document.getElementById("stat_mood").innerHTML = player.mood;
+			 document.getElementById("stat_energy").innerHTML = player.energy;
+			 document.getElementById("stat_grade").innerHTML = player.grade;
+			 document.getElementById("stat_suspect").innerHTML = player.suspectLevel;
+			 document.getElementById("stat_hunger").innerHTML = player.hunger;
+			 document.getElementById("stat_caffeine").innerHTML = player.caffeine;
+			 document.getElementById("stat_nerd").innerHTML = player.nerd;
+           }
+    });
+}
+
+
+function GetRoom(){
+$.ajax({
+            url:"../php/actionRequest.php", //the page containing php script
+            type: "post", //request type,
+           	data: "getRoom",
+            success: function(result){
+            currentRoom = "";
+             currentRoom = currentRoom + result;
+           }
+         });
+}
+function SetRoom(room){
+	$.ajax({
+            url:"../php/actionRequest.php", //the page containing php script
+            type: "post", //request type,
+           	data: {"setRoom" : room},
+            success: function(result){
+
+             currentRoom = result;
+             alert(currentRoom);
+           }
+         });
 }
 
 const STAT_LEVEL = {
@@ -60,155 +100,63 @@ class Player {
 		this.caffeine = caffeine;
 		this.nerd = nerd;
 	} 
-	hunger(){
-		return hunger;
+	UpdateStats(mood, energy, grade, suspectLevel, hunger, caffeine, nerd){
+		this.mood = mood;
+		this.energy = energy;
+		this.grade = grade;
+		this.suspectLevel = suspectLevel;
+		this.hunger = hunger;
+		this.caffeine = caffeine;
+		this.nerd = nerd;
 	}
+}
+
+function CancelAction(action){
+	/*$.ajax("game_actions.php").done(function(data){
+        $(".rooms_actionsbar").html(data);
+
+    }).fail(function(){
+    });
+
+    InitStats(); */
+   // $(".rooms_actionsbar").load("game_actions.php");
+    location.reload();
+}
+
+function CompleteAction(action){
+	//alert(room);
+	$.ajax("game_actions.php").done(function(data){
+        $(".rooms_actionsbar").html(data);
+
+    }).fail(function(){
+    });
+
+    InitStats();
 }
 
 function SelectAction(action){
+
+
+ 	$.ajax({
+            url:"../php/actionRequest.php", //the page containing php script
+            type: "post", //request type,
+           	data: {"requestAction" : action},
+            success: function(result){
+
+
+           }
+         });
+
+
+ 	//load inAction.php
+ 	$.ajax("game_actionbar_inAction.php").done(function(data){
+        $(".rooms_actionsbar").html(data);
+        
+        $("#currentActionHeading").text("Current Action: " +action);
+        $(".update_btn").attr('id', action);
+
+    }).fail(function(){
+        alert("fail");
+    });
 	
-	alert("You are in a " +action +" state...\nPress okay to jump ahead in time");
-	switch(action) {
-  	case "SLEEP":
-    	sleep();
-    	break;
-  	case "STUDY":
-    	study();
-    	break;
-    case "GYM":
-    	gym();
-    	break;
-  	case "CHAT":
-    	chat();
-    	break;
-    case "COFFEE":
-    	coffee();
-    	break;
-  	case "FLIRT":
-    	flirt();
-   		break;
-    case "EAT":
-    	eat();
-    	break;
-  	case "HOMEWORK":
-    	homework();
-    	break;
-    case "HACK":
-    	hack();
-    	break;
- 	default:
-    	alert("error in switch statement for SelectAction()");
-	}
-}
-//TODO change to handle percentages
-function increaseStat(stat){
-	switch(stat){
-		case STAT_LEVEL.DEAD:
-			return STAT_LEVEL.DEAD;
-			break;
-		case STAT_LEVEL.CRITICAL:
-			return STAT_LEVEL.BAD;
-			break;
-		case STAT_LEVEL.BAD:
-			return STAT_LEVEL.NORMAL;
-			break;
-		case STAT_LEVEL.NORMAL:
-			return STAT_LEVEL.GOOD;
-			break; 
-		case STAT_LEVEL.GOOD: 
-			return STAT_LEVEL.EXCELLENT;
-			break;
-		case STAT_LEVEL.EXCELLENT: 
-			return STAT_LEVEL.EXCELLENT;
-		break;
-
-		default:
-			console.log("ERROR: increase stats switch-statement fell through");
-	}
-}
-function decreaseStat(stat, multiplier){
-	switch(stat){
-		case STAT_LEVEL.DEAD:
-			return STAT_LEVEL.DEAD;
-			break;
-		case STAT_LEVEL.CRITICAL:
-			return STAT_LEVEL.DEAD;
-			break;
-		case STAT_LEVEL.BAD:
-			return STAT_LEVEL.CRITICAL;
-			break;
-		case STAT_LEVEL.NORMAL:
-			return STAT_LEVEL.BAD;
-			break; 
-		case STAT_LEVEL.GOOD: 
-			return STAT_LEVEL.NORMAL;
-			break;
-		case STAT_LEVEL.EXCELLENT: 
-			return STAT_LEVEL.GOOD;
-		break;
-
-		default:
-			console.log("ERROR: increase stats switch-statement fell through");
-	}
-}
-
-//missing class decreases grade
-function sleep(){
-	player.energy = increaseStat(player.energy);
-	player.caffeine = increaseStat(player.caffeine);
-
-	if(player.suspectLevel == STAT_LEVEL.BAD || player.STAT_LEVEL == STAT_LEVEL.CRITICAL){
-		player.suspectLevel = increaseStat(player.suspectLevel);
-	}
-
-	player.hunger = decreaseStat(player.hunger);
-	InitStats();
-}
-function study(){
-	player.nerd = increaseStat(player.nerd);
-	
-	player.mood = decreaseStat(player.mood);
-	player.energy = decreaseStat(player.energy);
-	InitStats();
-}
-function gym(){
-	player.mood = increaseStat(player.mood);
-	
-	player.energy = decreaseStat(player.energy);
-	player.hunger = decreaseStat(player.hunger);
-	InitStats();
-}
-function chat(){
-	player.mood = increaseStat(player.mood);
-	InitStats();
-}
-function coffee(){
-	player.energy = increaseStat(player.energy);
-
-	player.caffeine = decreaseStat(player.caffeine);
-	InitStats();
-}
-function flirt(){
-	player.mood = increaseStat(player.mood);
-
-	player.nerd = decreaseStat(player.nerd);
-	InitStats();
-}
-function eat(){
-	player.hunger = increaseStat(player.hunger);
-	InitStats();
-}
-function homework(){
-	player.grade = increaseStat(player.grade);
-	player.nerd = increaseStat(player.nerd);
-	
-	player.mood = decreaseStat(player.mood);
-	player.energy = decreaseStat(player.energy);
-	InitStats();
-}
-function hack(){
-	player.grade = increaseStat(player.grade);
-
-	player.suspectLevel = decreaseStat(player.suspectLevel);
-	InitStats();
 }
