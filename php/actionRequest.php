@@ -1,5 +1,23 @@
 <?php 
-	
+	session_start();
+	require_once("dbinfo.inc");
+
+	// must be logged in to view page
+	if(!isset($_SESSION['UserData']['Username'])){
+	   header("location:../login.php");
+	   exit;
+	}
+
+	$handle;
+	try{
+		$handle = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+
+	}catch(PDOException $e){
+		$err .= "Connection failed: " . $e->getMessage() . "\n";
+	}	
+		
+
+	}
 	class PLAYER{
 		static $CurrentAction = 'NONE';
 		static $currentRoom = "Template.php";
@@ -24,6 +42,14 @@
 	
 
 	function processAction($data){
+		//get the user stats
+		if($handle){
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = ?)");
+			$stmt->bind_param("s", $userid);
+			$userid = $_SESSION['UserData']['Username'];
+
+			$rslt = $myHandle->query($stmt);
+		}
         switch ($data) {
         	case 'SLEEP':
         		return player_sleep();
@@ -61,7 +87,13 @@
 
 
     function retrieveStats(){
-    	/*$stats = ['MOOD' => PLAYER::$MOOD, 'ENERGY' => PLAYER::$ENERGY, 'GRADE' => PLAYER::$GRADE, 'SUSPECTLEVEL' => PLAYER::$SUSPECTLEVEL, 'HUNGER' => PLAYER::$HUNGER, 'CAFFEINE' => PLAYER::$CAFFEINE, 'NERD' => PLAYER::$NERD];*/
+    	if($handle){
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = ?)");
+			$stmt->bind_param("s", $userid);
+			$userid = $_SESSION['UserData']['Username'];
+
+			$rslt = $myHandle->query($stmt);
+		}
     	$stats = array(PLAYER::$MOOD, PLAYER::$ENERGY, PLAYER::$GRADE, PLAYER::$SUSPECTLEVEL, PLAYER::$HUNGER, PLAYER::$CAFFEINE, PLAYER::$NERD);
     	return $stats;
     }
