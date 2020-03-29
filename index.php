@@ -34,7 +34,7 @@ function attempt_login($user, $pass){
 
 	 global $servername, $database, $username, $password;
 	 global $log;
-
+	 $myHandle;
 	try{
 			$myHandle = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 			//echo "Success. Connected to database";
@@ -56,11 +56,11 @@ function attempt_login($user, $pass){
 			if(password_check($passwordAttempt, $hashed_pass)){
 				return true;
 			}else{
-				$log .="attempt: $passwordAttempt, hash: $hashed_pass, password didn't match";
+			//	$log .="attempt: $passwordAttempt, hash: $hashed_pass, password didn't match";
 				return false;
 			}
 		}else{
-			$log .= "user name did not match";
+	//		$log .= "user name did not match";
 			return false;
 		}
 	}
@@ -79,7 +79,7 @@ if(isset($_POST['submit'])){
  //attempt login with submitted data
    if(!isset($err) && attempt_login($form_name, $form_pass)){
    		$status = 1;
-		$_SESSION['UserData']['Username'] = $form_name;
+//		$_SESSION['UserData']['Username'] = $form_name;
 		header("location:game/template.php");
 		//	exit;
    }else{
@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
 
 				<label for="user">Username</label><br>
 				<input type="text" id="user" name="user" required="required"/><br>
-				<label for="login_pass">Password</label><br>
+				<label for="pass">Password</label><br>
 				<input type="password" id="pass" name="pass" required="required"/><br><br>
 				<input class="button" type="submit" name="submit" value="login"/>
 
@@ -113,7 +113,7 @@ if(isset($_POST['submit'])){
 <?php
 	//check status, and either show logged in, or show register link
 	if($status === 1 || $status ===2){
-		echo "you're totally logged in: ".$_SESSION['UserData']['Username'].
+	//	echo "you're totally logged in: ".$_SESSION['UserData']['Username'].
 			"<br/>";
 	}else{
 		echo "Don't have an account? Create one: ";

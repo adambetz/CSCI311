@@ -1,11 +1,3 @@
-<?php 
-        //require_once("dbinfo.inc");
-        require_once("game_top.php");
-        require_once("game_mid.php");
-        require_once("game_actions.php");
- ?>
-
-
 <div class="rooms_chatbar">
 
 </div>
