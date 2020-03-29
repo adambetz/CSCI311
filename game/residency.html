@@ -2,19 +2,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 <title>VIU SIMS</title>
 <link rel="stylesheet" href="../css/templateCSS.css"/>
 <script src="../js/prototypeJavaScript.js"></script>
 <script src="../js/mapResidency.js"></script>
 </head>
 <body onload="Initialize()">
+<div id="app">
+<v-app>
+		 <div class="rooms_topbar">
+		 <h1>VIU SIMS</h1>
+                     <div id="btnblk" style="vertical-align:top ; float:right ; margin-botton:15px">
+		 <v-btn class="mx-2" fab dark small color="lime" dark href="../login.php" target="_self">
+        <v-icon dark>mdi-account-circle</v-icon>
+      </v-btn>
 
-<div class="rooms_topbar">
-        <h1>VIU SIMS</h1>
-        <button id="logout" onclick="window.history.back()">Log Out</button>
-        <a href="../admin/settings.html"><button id="setting">Settings</button></a>
+      <v-btn class="mx-2" fab dark small color="lime" dark href="../admin/settings.html" target="_self">
+        <v-icon dark>mdi-wrench</v-icon>
+      </v-btn>
+         </div>
 </div>
-
 <div class="rooms_leftsidebarTop">
 <h2 class="heading">WHO'S ONLINE</h2>
 <!-- JS function grabs list and display's who is logged on-->
@@ -27,8 +38,7 @@ arnold
 
 <div class="rooms_leftsidebarBottom">
 <!--referenced by js. Hardcoad for prototype-->
-        <h2 id="roomName">RESIDENCE</h2>
-        <p id="roomDesc">This is the Residence room</p>
+        <img src="../media/bed.png" alt="bed"  style="width:300px;height:380px;">
 </div>
 
 <div class="rooms_rightsidebar">
@@ -67,7 +77,37 @@ arnold
 </div>
 <div class="rooms_chatbar">
 
+</div>   
+
+    <div class="text_center">
+<div class="rooms_actionsbar">
+<h3 class="heading">CHOOSE AN ACTION...</h3>
+      <v-btn class="mx-2" fab dark small color="lime" id ="SLEEP" onclick="SelectAction(id)">
+        <v-icon dark>mdi-sleep</v-icon>
+      </v-btn>
+
+      <v-btn class="mx-2" fab dark small color="lime" id= "STUDY" onclick="SelectAction(id)">
+        <v-icon dark>mdi-book</v-icon>
+      </v-btn>
+
+     <v-btn class="mx-2" fab dark small color="lime" id= "CHAT" onclick="SelectAction(id)">
+        <v-icon dark>mdi-chat</v-icon>
+      </v-btn>
+
+      <v-btn class="mx-2" fab dark small color="lime" id= "HOMEWORK" onclick="SelectAction(id)">
+        <v-icon dark>mdi-pencil</v-icon>
+      </v-btn>
+
+
+      <v-btn class="mx-2" fab dark small color="lime" id= "FLIRT" onclick="SelectAction(id)">
+        <v-icon dark>mdi-account</v-icon>
+      </v-btn>
+
+    </div>
 </div>
+   </v-app>
+</div>
+<!--
 <div class="rooms_actionsbar">
     <h3 class="heading">CHOOSE AN ACTION...</h3>
     <div class="action_buttons">
@@ -81,7 +121,7 @@ arnold
         <button id="HOMEWORK" onclick="SelectAction(id)">Do homework</button>
         <button id="HACK" onclick="SelectAction(id)" style="display: none;" >Hack a computer</button>
     </div>
-</div>
+</div>-->
 <div id="map" class="rooms_mapbar">
   <!-- <img class="map" src="../media/Map.jpg" alt="VIU Campus Map">
    <a href="gym.html"><div class="gym" title="Go to the Gym"></div></a>
@@ -93,5 +133,14 @@ arnold
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8PsWNo41OsmqfWqkfpRck43DWoB8_lVA&callback=initMap"
    async defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+  el: '#app',
+  vuetify: new Vuetify(),
+  })
+
+  </script>
 </body>
 </html>

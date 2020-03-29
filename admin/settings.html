@@ -1,38 +1,150 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 		<title>VIU Sims - Account Settings</title>
 		<link rel="stylesheet" href="../css/settingsCSS.css">	
 	</head>
-	<body class="main">
-		<div class="heading">
-			<h2>Account Settings</h2>
+	<body>
+	<div id="app">
+  <v-app>
+	            <div class="heading">
+	             <div id="btnblk" style=" float:left">
+              <v-btn color="lime" fab small dark href="../game/template.html" target="_self">
+                <v-icon>mdi-home</v-icon>
+              </v-btn>
+              </div>
+			<h2>ACCOUNT SETTINGS</h2>
 		</div>
-					
-		
+	
+<!--<div id="app">
+	<v-app id="inspire">
 		<div class="settingsDiv">
-			<p><strong>Personal Details</strong></p>
-			<div class="buttonDiv">
-				<button type="button" onclick="" class="button">Edit</button><br>
-			</div>
+			<v-card-title>Personal Details</v-card-title>
+			<div class="buttonDiv">		
+    <v-container class=" teal">
+        <v-col md="4" offset-md="4">
+          <v-card class="pa-2" outlined tile>
+            .col-md-4 .offset-md-4
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row class="mb-6" no-gutters>
+        </v-card>
+        </v-col>
+      </v-row>
+       <v-row align="center" class="mb-6" no-gutters>
+        <v-col md="4">
+          <v-card class="pa-2" outlined tile>
+            <button type="button" onclick="" class="button">Edit</button><br>
 			<p>*Last Name*,*First Name*</p><br>
 			<p>*Username*</p>
 			<hr>
-			<p><strong>Email</strong></p><br>
+			<v-card-title>Email</v-card-title><br>
 			<p>*Email Address*</p>
 			<hr>
-			<p><strong>Password</strong></p>
+			<v-card-title>Password</v-card-title>
 			<div class="buttonDiv">
 				<button type="button" onclick="" class="button">Edit</button><br>
 			</div>	
 			<p>*password*</p>
 			<hr><br><br>
+		</div>
+		</v-card>
+        </v-col>
+    </v-container>
+   </div>
+  </v-app>
+</div>-->
+
+ 
+  <div class="settingsDiv">
+   <v-container >
+        <v-card-title>PERSONAL DETAILS</v-card-title>
+      <v-row>
+        <v-col class=" teal lighten-5" cols="12" md="7">
+          <v-card outlined tile>
+          <form>
+          <div class="textDiv">	
+           <v-card-title>FIRST NAME</v-card-title>
+            <input type="text" id="fname" name="fname" placeholder="First Name"  required="required"/>
+             <v-card-title>LAST NAME</v-card-title>
+				<input type="text" id="lname" name="lname" placeholder="Last Name"  required="required"/><br></br>
+				 <v-card-title>USERNAME</v-card-title>
+            <input type="text" id="user" name="user" placeholder="Username"  required="required"/><br>
 			<div class="buttonDiv">
-			<a href="../game/template.html"><button class="button">Done</button></a>
-		</div>
-		</div>
-		<footer class="footer">
+						<v-btn large color="teal">EDIT</v-btn>
+						 </div>
+			<hr>
+			 <v-card-title>EMAIL</v-card-title>
+			<input type="email" id="email" name="email" placeholder="Email Address"  required="required"/><br>
+			<div class="buttonDiv">
+						 <v-btn large color="teal">EDIT</v-btn>
+						 </div>
+			<hr>
+			 <v-card-title>PASSWORD</v-card-title>
+			<input type="password" id="pass" name="pass" placeholder="Password"  required="required"/><br>
+			<div class="buttonDiv">
+				<v-btn large color="teal">EDIT</v-btn>
+			</div>	
+			<hr><br>
+			</div>
+			</form>
+          </v-card>
+        </v-col>
+       <v-col class=" teal lighten-5" cols="6" md="4">
+          <v-card class="pa-2" outlined tile>
+            <v-card-title>TEAM MEMBERS</v-card-title>
+            <v-list>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          @click=""
+        >
+  
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title"></v-list-item-title>
+          </v-list-item-content>
+  
+          <v-list-item-avatar>
+            <v-img :src="item.avatar"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+      </v-list>
+
+          </v-card>
+        </v-col>
+      
+    </v-container>
+    </div>
+  </v-app>
+</div>
+
+<footer class="footer">
 			<p> &copy;2020 copyrights </p>
-		</footer>
+
+</footer>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+   new Vue({
+  el: '#app',
+  vuetify: new Vuetify(),
+   data () {
+    return {
+      items: [
+        { icon: true, title: 'ADAM', avatar: '../media/funko.jpeg' },
+        { title: 'JACO', avatar: '../media/saur.png' },
+        { title: 'SAHIB', avatar: '../media/pikachu.jpg' },
+        { title: 'SANYA', avatar: '../media/cute.webp' },
+      ],
+    }
+  },
+})
+
+  </script>
 	</body>
 </html>

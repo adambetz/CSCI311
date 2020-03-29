@@ -16,8 +16,8 @@ create table members (
 	username varchar(30) not null unique,
 	password varchar(128) not null,
 	id int not null auto_increment primary key
-	/*currentAction varchar(100),
-	currentActionEndTime time*/
+	currentAction varchar(100)
+	/*currentActionEndTime time*/
 );
 
 create table stats (
