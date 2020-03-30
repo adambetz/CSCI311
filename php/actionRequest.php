@@ -1,6 +1,11 @@
 <?php 
 	session_start();
 	require_once("../private/dbinfo.inc");
+<<<<<<< HEAD
+=======
+
+	// temporarily set session varieables for testing
+>>>>>>> 02e819eb6babb6262e9611818deac111b851232c
 
 	// must be logged in to view page
 	if(!isset($_SESSION['UserData']['Username'])){
@@ -17,7 +22,10 @@
 	}	
 		
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 02e819eb6babb6262e9611818deac111b851232c
 	class PLAYER{
 		static $CurrentAction = 'NONE';
 		static $currentRoom = "Template.php";
@@ -87,12 +95,15 @@
 
 
     function retrieveStats(){
-    	if($handle){
+    	if($GLOBALS['handle']){
+    		$handle = $GLOBALS['handle'];
 			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = ?)");
 			$stmt->bind_param("s", $userid);
 			$userid = $_SESSION['UserData']['Username'];
 
-			$rslt = $myHandle->query($stmt);
+			$rslt = $handle->query($stmt);
+
+			print_r($rslt);
 		}
     	$stats = array(PLAYER::$MOOD, PLAYER::$ENERGY, PLAYER::$GRADE, PLAYER::$SUSPECTLEVEL, PLAYER::$HUNGER, PLAYER::$CAFFEINE, PLAYER::$NERD);
     	return $stats;
