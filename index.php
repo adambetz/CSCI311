@@ -50,10 +50,10 @@ function attempt_login($user, $pass){
 		$log = $myStmt;
 		if(count($rslt) > 0){
 			foreach($rslt as $row){
-				$hashed_pass = $row['pass'];
+				$hashed_pass = $row['password'];
 			}
 
-			if(password_check($passwordAttempt, $hashed_pass)){
+			if(password_check($pass, $hashed_pass)){
 				return true;
 			}else{
 			//	$log .="attempt: $passwordAttempt, hash: $hashed_pass, password didn't match";
@@ -74,6 +74,7 @@ function attempt_login($user, $pass){
 if(isset($_POST['submit'])){
    $form_name=$_POST['user'];
    $form_pass=$_POST['pass'];
+
    //validate data
 
  //attempt login with submitted data
@@ -101,7 +102,7 @@ if(isset($_POST['submit'])){
 ?>
 
 
-			<form method="post" action="login.php">
+			<form method="post" action="index.php">
 
 				<label for="user">Username</label><br>
 				<input type="text" id="user" name="user" required="required"/><br>

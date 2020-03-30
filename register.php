@@ -80,7 +80,7 @@
 		if(!isset($myerr) && createAccount($form_fname,$form_lname,$form_username, $form_password, $form_email)){
 			$status = 1;
 			$_SESSION['UserData']['Username'] = $form_username;
-			header("location:game/template.html");
+			header("location:game/template.php");
 			exit;
 		}else{
 			$status = 0;

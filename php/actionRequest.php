@@ -1,10 +1,10 @@
 <?php 
 	session_start();
-	require_once("dbinfo.inc");
+	require_once("../private/dbinfo.inc");
 
 	// must be logged in to view page
 	if(!isset($_SESSION['UserData']['Username'])){
-	   header("location:../login.php");
+	   header("location:../index.php");
 	   exit;
 	}
 
@@ -17,7 +17,7 @@
 	}	
 		
 
-	}
+	
 	class PLAYER{
 		static $CurrentAction = 'NONE';
 		static $currentRoom = "Template.php";
