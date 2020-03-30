@@ -1,16 +1,12 @@
 <?php 
 	session_start();
 	require_once("../private/dbinfo.inc");
-<<<<<<< HEAD
-=======
-
-	// temporarily set session varieables for testing
->>>>>>> 02e819eb6babb6262e9611818deac111b851232c
 
 	// must be logged in to view page
 	if(!isset($_SESSION['UserData']['Username'])){
-	   header("location:../index.php");
-	   exit;
+		print_r("not logged in");
+		header("location:../index.php");
+	  	exit;
 	}
 
 	$handle;
@@ -21,11 +17,6 @@
 		$err .= "Connection failed: " . $e->getMessage() . "\n";
 	}	
 		
-
-<<<<<<< HEAD
-	
-=======
->>>>>>> 02e819eb6babb6262e9611818deac111b851232c
 	class PLAYER{
 		static $CurrentAction = 'NONE';
 		static $currentRoom = "Template.php";
@@ -52,9 +43,9 @@
 	function processAction($data){
 		//get the user stats
 		if($handle){
-			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = ?)");
-			$stmt->bind_param("s", $userid);
 			$userid = $_SESSION['UserData']['Username'];
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = :uid)");
+			$stmt->bindParam(':uid', $userid);
 
 			$rslt = $myHandle->query($stmt);
 		}
@@ -97,13 +88,14 @@
     function retrieveStats(){
     	if($GLOBALS['handle']){
     		$handle = $GLOBALS['handle'];
-			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = ?)");
-			$stmt->bind_param("s", $userid);
 			$userid = $_SESSION['UserData']['Username'];
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = :uid)");
+			$stmt->bindParam(':uid', $userid);
 
 			$rslt = $handle->query($stmt);
+			//$rslt = $stmt->execute();
 
-			print_r($rslt);
+			
 		}
     	$stats = array(PLAYER::$MOOD, PLAYER::$ENERGY, PLAYER::$GRADE, PLAYER::$SUSPECTLEVEL, PLAYER::$HUNGER, PLAYER::$CAFFEINE, PLAYER::$NERD);
     	return $stats;
@@ -123,9 +115,9 @@
     } else if (isset($_POST['requestStats'])) {
         echo json_encode(retrieveStats());
     } else if (isset($_POST['getRoom'])) {
-        echo json_encode(getRoom());
+        echo getRoom();
     } else if (isset($_POST['setRoom'])) {
-        echo json_encode(setRoom($_POST['setRoom']));
+        echo setRoom($_POST['setRoom']);
     }
 
 
