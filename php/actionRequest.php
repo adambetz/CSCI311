@@ -89,13 +89,12 @@
     	if($GLOBALS['handle']){
     		$handle = $GLOBALS['handle'];
 			$userid = $_SESSION['UserData']['Username'];
-			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = :uid)");
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = \":uid\")");
 			$stmt->bindParam(':uid', $userid);
 
 			$rslt = $handle->query($stmt);
 			//$rslt = $stmt->execute();
-
-			
+			PLAYER::$MOOD = $rslt["userMood"];
 		}
     	$stats = array(PLAYER::$MOOD, PLAYER::$ENERGY, PLAYER::$GRADE, PLAYER::$SUSPECTLEVEL, PLAYER::$HUNGER, PLAYER::$CAFFEINE, PLAYER::$NERD);
     	return $stats;
