@@ -9,7 +9,9 @@
 	  	exit;
 	}
 
+	$userid = $_SESSION['UserData']['Username'];
 	$handle;
+
 	try{
 		$handle = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
@@ -21,13 +23,13 @@
 		static $CurrentAction = 'NONE';
 		static $currentRoom = "Template.php";
 
-		static $MOOD = 50;
-		static $ENERGY = 20;
-		static $GRADE = 30;
-		static $SUSPECTLEVEL = 40;
-		static $HUNGER = 50;
-		static $CAFFEINE = 60;
-		static $NERD = 70;
+		static $MOOD;
+		static $ENERGY;
+		static $GRADE;
+		static $SUSPECTLEVEL;
+		static $HUNGER;
+		static $CAFFEINE;
+		static $NERD;
 	}
 
 	class ROOMS{
@@ -40,61 +42,77 @@
 	}
 	
 
-	function processAction($data){
-		//get the user stats
-		if($handle){
-			$userid = $_SESSION['UserData']['Username'];
-			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = :uid)");
-			$stmt->bindParam(':uid', $userid);
-
-			$rslt = $myHandle->query($stmt);
-		}
-        switch ($data) {
+	function completeAction(){
+        switch ($_SESSION['UserData']['CurrentAction']) {
         	case 'SLEEP':
-        		return player_sleep();
+        		player_sleep();
         		break;
         	case 'STUDY':
-        		return player_study();
+        		player_study();
         		break;
         	case 'GYM':
-        		return player_gym();
+        		player_gym();
         		break;
         	case 'CHAT':
-        		return player_chat();
+        		player_chat();
         		break;
         	case 'COFFEE':
-        		return player_coffee();
+        		player_coffee();
         		break;
         	case 'FLIRT':
-        		return player_flirt();
+        		player_flirt();
         		break;
         	case 'EAT':
-        		return player_eat();
+        		player_eat();
         		break;
         	case 'HOMEWORK':
-        		return player_homework();
+        		player_homework();
         		break;
         	case 'HACK':
-        		return player_hack();
+        		player_hack();
         		break;
         	default:
         		PLAYER::$CurrentAction = 'NONE';
         		return 0;
         		break;
-        }
-    }
+	}
+		$handle = $GLOBALS['handle'];
+		$stmt = $handle->prepare("UPDATE stats SET 'userMood' = :1, 'energy' = :2, 'grade' = :3, 'suspicion' = :4, 'hunger' = :5, 'caffeine' = :6, 'nerdStatus' = :7  WHERE id = (SELECT id from members where username = \"$GLOBALS[userid]\")");
+		$stmt->bindParam(':1', PLAYER::$MOOD);	
+		$stmt->bindParam(':2', PLAYER::$ENERGY);	
+		$stmt->bindParam(':3', PLAYER::$GRADE);	
+		$stmt->bindParam(':4', PLAYER::$SUSPECTLEVEL);	
+		$stmt->bindParam(':5', PLAYER::$HUNGER);	
+		$stmt->bindParam(':6', PLAYER::$CAFFEINE);	
+		$stmt->bindParam(':7', PLAYER::$NERD);	
+		$stmt->execute();
+		$_SESSION['UserData']['CurrentAction'] = 'NONE';
+		return PLAYER::$MOOD;		
+	}
+	
+
+	function processAction($action){
+		$_SESSION['UserData']['CurrentAction'] = $action;
+		return $_SESSION['UserData']['CurrentAction'];		
+	}
 
 
     function retrieveStats(){
     	if($GLOBALS['handle']){
     		$handle = $GLOBALS['handle'];
-			$userid = $_SESSION['UserData']['Username'];
-			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = \":uid\")");
-			$stmt->bindParam(':uid', $userid);
-
-			$rslt = $handle->query($stmt);
-			//$rslt = $stmt->execute();
+			//$userid = $_SESSION['UserData']['Username'];
+			//$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = \":uid\")");
+			//$stmt->bindParam(':uid', $userid);	
+			$stmt = $handle->prepare("SELECT * FROM stats WHERE id = (SELECT id from members where username = \"$GLOBALS[userid]\")");
+			$stmt->execute();
+			$rslt = $stmt->fetch();
 			PLAYER::$MOOD = $rslt["userMood"];
+			PLAYER::$ENERGY = $rslt["energy"];
+			PLAYER::$GRADE = $rslt["grade"];
+			PLAYER::$SUSPECTLEVEL = $rslt["suspicion"];
+			PLAYER::$HUNGER = $rslt["hunger"];
+			PLAYER::$CAFFEINE = $rslt["caffeine"];
+			PLAYER::$NERD = $rslt["nerdStatus"];
 		}
     	$stats = array(PLAYER::$MOOD, PLAYER::$ENERGY, PLAYER::$GRADE, PLAYER::$SUSPECTLEVEL, PLAYER::$HUNGER, PLAYER::$CAFFEINE, PLAYER::$NERD);
     	return $stats;
@@ -109,7 +127,7 @@
     }
 
 
-	if (isset($_POST['requestAction'])) {
+    if (isset($_POST['requestAction'])) {
         echo processAction($_POST['requestAction']);
     } else if (isset($_POST['requestStats'])) {
         echo json_encode(retrieveStats());
@@ -117,6 +135,9 @@
         echo getRoom();
     } else if (isset($_POST['setRoom'])) {
         echo setRoom($_POST['setRoom']);
+    } else if (isset($_POST['completeAction'])){
+	retrieveStats();
+        echo completeAction();
     }
 
 
@@ -124,7 +145,7 @@
     	player::$ENERGY = 100;
     	player::$MOOD += 50;
     	player::$SUSPECTLEVEL = 0;
-    	player::$HUNGER += 50;
+    	player::$HUNGER +=  50;
     	player::$CAFFEINE = 0;
     	return 6;
 	}

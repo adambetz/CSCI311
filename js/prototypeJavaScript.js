@@ -125,13 +125,17 @@ function CancelAction(action){
 
 function CompleteAction(action){
 	//alert(room);
-	$.ajax("game_actions.php").done(function(data){
-        $(".rooms_actionsbar").html(data);
-
-    }).fail(function(){
-    });
-
-    InitStats();
+	$.ajax({
+            url:"../php/actionRequest.php", //the page containing php script
+            type: "post", //request type,
+            data: "completeAction",
+            success: function(result){
+		 alert(result);
+           	location.reload(); 
+		    
+		//InitStats();
+	    }
+    	});
 }
 
 function SelectAction(action){
@@ -140,10 +144,10 @@ function SelectAction(action){
  	$.ajax({
             url:"../php/actionRequest.php", //the page containing php script
             type: "post", //request type,
-           	data: {"requestAction" : action},
+            data: {"requestAction" : action},
             success: function(result){
 
-
+		//alert(result);
            }
          });
 
