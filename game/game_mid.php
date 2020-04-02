@@ -10,8 +10,7 @@ arnold
 
 <div class="rooms_leftsidebarBottom">
 <!--referenced by js. Hardcoad for prototype-->
-        <h2 id="roomName">TEMPLATE</h2>
-        <p id="roomDesc">This is the template room</p>
+      <img src="../media/book.png" alt="book" style="max-width:100%;height:100%;">
 </div>
 
 <div class="rooms_rightsidebar">

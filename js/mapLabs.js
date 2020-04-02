@@ -102,7 +102,7 @@ function initMap(){
         content: "<p>Go to the Pub!</p>"
       });
       markerPub.addListener('click', function() {
-        window.location.href = "./pub.html";
+        window.location.href = "./pub.php";
       });
       markerPub.addListener('mouseover', function() {
         pubInfoWindow.open(map, markerPub);
@@ -118,7 +118,7 @@ function initMap(){
         content: "<p>Go to the Residence!</p>"
       });
       markerResidence.addListener('click', function() {
-        window.location.href = "./residency.html";
+        window.location.href = "./residency.php";
       });
       markerResidence.addListener('mouseover', function() {
         residenceInfoWindow.open(map, markerResidence);
@@ -134,7 +134,7 @@ function initMap(){
         content: "<p>Go to the Gym!</p>"
       });
       markerGym.addListener('click', function() {
-        window.location.href = "./gym.html";
+        window.location.href = "./gym.php";
       });
       markerGym.addListener('mouseover', function() {
         gymInfoWindow.open(map, markerGym);

@@ -86,6 +86,7 @@
 	 border-collapse: collapse;
 	 /*Testing actual position with this */
 	 background-color: #004d4d;
+     color: white;
 }
 
 .rooms_mapbar {

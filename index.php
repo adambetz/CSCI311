@@ -80,7 +80,7 @@ if(isset($_POST['submit'])){
  //attempt login with submitted data
    if(!isset($err) && attempt_login($form_name, $form_pass)){
    		$status = 1;
-//		$_SESSION['UserData']['Username'] = $form_name;
+		$_SESSION['UserData']['Username'] = $form_name;
 		header("location:game/template.php");
 		//	exit;
    }else{

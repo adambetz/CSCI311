@@ -16,12 +16,12 @@
 <v-app>
 		 <div class="rooms_topbar">
 		 <h1>VIU SIMS</h1>
-             <div id="btnblk1" style=" vertical-align: top;float:right; margin-botton:15px; position:">
-		 <v-btn class="mx-2" fab dark small color="lime" dark icon href="../index.php" target="_self">
+                  <div id="btnblk" style="vertical-align:top ; float:right ; margin-botton:15px">
+		 <v-btn class="mx-2" fab dark small color="lime" dark href="../" target="_self">
         <v-icon dark>mdi-account-circle</v-icon>
       </v-btn>
 
-      <v-btn class="mx-2" fab dark small color="lime" dark icon href="../admin/settings.html" target="_self">
+      <v-btn class="mx-2" fab dark small color="lime" dark href="../admin/settings.html" target="_self">
         <v-icon dark>mdi-wrench</v-icon>
       </v-btn>
          </div>

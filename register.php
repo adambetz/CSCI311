@@ -110,8 +110,18 @@
 				$insert = $myHandle->query($sql);
 				//echo "do we get to here? yes we do";
 				if($insert !== false){
-				  return true;
 					//echo "how about to here?";
+				
+				   $stmt_stat = $myHandle->prepare("SELECT id from members where username = :u_name");
+			 	   $stmt_stat->bindParam(':u_name', $user);
+				   $stmt_stat->execute();
+				   $uid = $stmt_stat->fetchColumn();
+
+				   $stmt_stat = $myHandle->prepare("INSERT into stats VALUES (:uid ,50,50,50,50,50,50,50)");
+				   $stmt_stat->bindParam(':uid', $uid);
+				   $stmt_stat->execute();
+
+				   return true;
 				}
 
 			}else{

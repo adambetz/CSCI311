@@ -7,7 +7,7 @@
   <title>My Google Map</title>
   <style>
     #map {
-      height:700px;
+      height:600px;
       width:100%;
     }
   </style>

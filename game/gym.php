@@ -14,7 +14,7 @@
     
 
 	<div class="rooms_actionsbar">
-	<h3>Choose an action... </h3>
+	<h2>CHOOSE YOUR ACTION </h2>
 		<div class="text_center">
 	      <v-btn class="mx-2" fab dark small color="lime" id ="SLEEP" onclick="SelectAction(id)">
 	        <v-icon dark>mdi-sleep</v-icon>
