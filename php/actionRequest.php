@@ -77,7 +77,7 @@
         		break;
 	}
 		$handle = $GLOBALS['handle'];
-		$stmt = $handle->prepare("UPDATE stats SET 'userMood' = :1, 'energy' = :2, 'grade' = :3, 'suspicion' = :4, 'hunger' = :5, 'caffeine' = :6, 'nerdStatus' = :7  WHERE id = (SELECT id from members where username = \"$GLOBALS[userid]\")");
+		$stmt = $handle->prepare("UPDATE stats SET userMood = :1, energy = :2, grade = :3, suspicion = :4, hunger = :5, caffeine = :6, nerdStatus = :7  WHERE id = (SELECT id from members where username = \"$GLOBALS[userid]\")");
 		$stmt->bindParam(':1', PLAYER::$MOOD);	
 		$stmt->bindParam(':2', PLAYER::$ENERGY);	
 		$stmt->bindParam(':3', PLAYER::$GRADE);	
@@ -87,7 +87,7 @@
 		$stmt->bindParam(':7', PLAYER::$NERD);	
 		$stmt->execute();
 		$_SESSION['UserData']['CurrentAction'] = 'NONE';
-		return PLAYER::$MOOD;		
+		return 1;	
 	}
 	
 

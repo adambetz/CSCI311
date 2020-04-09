@@ -50,7 +50,7 @@ function SetRoom(room){
             success: function(result){
 
              currentRoom = result;
-             alert(currentRoom);
+             //alert(currentRoom);
            }
          });
 }
@@ -82,12 +82,6 @@ const ACTIONS = {
 	EAT: 'grab a bite to eat',
 	HOMEWORK: 'do homwork',
 	HACK: 'hack a computer'
-}
-
-class p{
-	constructor(thing){
-		this.thing = STAT_LEVEL.CRITICAL;
-	}
 }
 
 class Player {
@@ -130,7 +124,7 @@ function CompleteAction(action){
             type: "post", //request type,
             data: "completeAction",
             success: function(result){
-		 alert(result);
+		// alert(result);
            	location.reload(); 
 		    
 		//InitStats();
